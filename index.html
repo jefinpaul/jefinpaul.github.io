@@ -2,37 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Jefin's Site</title>
+  <title>Mirrored Background Layout</title>
   <style>
     body {
       margin: 0;
-      background-image: url('background.png'); /* Image should be in the same folder */
-      background-size: top left;
-      background-position: auto;
-      background-repeat: repeat;
+      overflow-x: hidden;
       font-family: 'Segoe UI', sans-serif;
     }
 
+    .background-half {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      background-repeat: repeat-y;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .left-bg {
+      left: 0;
+      background-image: url('background.jpg');
+    }
+
+    .right-bg {
+      right: 0;
+      background-image: url('background.jpg');
+      transform: scaleX(-1); /* This flips the image horizontally */
+      transform-origin: left;
+    }
+
     .notebook-container {
-      background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+      background-color: rgba(0, 0, 0, 0.85);
       max-width: 900px;
       margin: 80px auto;
       padding: 40px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
       color: white;
+      position: relative;
+      z-index: 1;
     }
 
-    .notebook-container p,
-    .notebook-container li,
-    .notebook-container ol,
-    .notebook-container ul {
-      color: white;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .notebook-container h1 {
+    h1 {
       color: #00aced;
       border-bottom: 2px solid #444;
       padding-bottom: 4px;
@@ -42,6 +54,11 @@
   </style>
 </head>
 <body>
+
+  <!-- Background halves -->
+  <div class="background-half left-bg"></div>
+  <div class="background-half right-bg"></div>
+
   <div class="notebook-container">
     <h1>Welcome to My Site</h1>
     <p>This is a stylish website using a background image and a centered content box.</p>
