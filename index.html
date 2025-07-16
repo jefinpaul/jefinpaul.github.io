@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Website</title>
+  <meta charset="UTF-8">
+  <title>Jefin's Site</title>
+  <style>
+    body {
+      margin: 0;
+      background-image: url('background.jpg'); /* Image should be in the same folder */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .notebook-container {
+      background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .notebook-container p,
+    .notebook-container li,
+    .notebook-container ol,
+    .notebook-container ul {
+      color: white;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .notebook-container h1 {
+      color: #00aced;
+      border-bottom: 2px solid #444;
+      padding-bottom: 4px;
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, I'm Jefin Paul!</h1>
-  <p>Welcome to my Page.</p>
+  <div class="notebook-container">
+    <h1>Welcome to My Site</h1>
+    <p>This is a stylish website using a background image and a centered content box.</p>
+    <p>All text here is inside a black box with white text, and the background is visible behind.</p>
+  </div>
 </body>
 </html>
