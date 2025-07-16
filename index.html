@@ -2,57 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mirrored Background</title>
+  <title>Jefin's Site</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      height: 100%;
-      font-family: sans-serif;
-      overflow-x: hidden;
-    }
-
-    .bg-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      z-index: -1;
-    }
-
-    .bg-left, .bg-right {
-      flex: 1;
-      background-image: url('background.png');
-      background-repeat: repeat-y;
+      background-image: url('background.png'); /* Image should be in the same folder */
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    .bg-right {
-      transform: scaleX(-1);
-    }
-
-    .content {
-      max-width: 800px;
-      margin: 100px auto;
+    .notebook-container {
+      background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+      max-width: 900px;
+      margin: 80px auto;
       padding: 40px;
-      background: rgba(0, 0, 0, 0.85);
-      color: white;
       border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .notebook-container p,
+    .notebook-container li,
+    .notebook-container ol,
+    .notebook-container ul {
+      color: white;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .notebook-container h1 {
+      color: #00aced;
+      border-bottom: 2px solid #444;
+      padding-bottom: 4px;
+      font-size: 28px;
+      margin-bottom: 24px;
     }
   </style>
 </head>
 <body>
-  <div class="bg-container">
-    <div class="bg-left"></div>
-    <div class="bg-right"></div>
-  </div>
-
-  <div class="content">
-    <h1>Hello, Jefin!</h1>
-    <p>This is your mirrored background test page.</p>
-    <p>If you see the same image on the left and a flipped version on the right — success!</p>
+  <div class="notebook-container">
+    <h1>Welcome to My Site</h1>
+    <p>This is a stylish website using a background image and a centered content box.</p>
+    <p>All text here is inside a black box with white text, and the background is visible behind.</p>
   </div>
 </body>
 </html>
