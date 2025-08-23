@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background: url('bg_eigen.jpeg') repeat;
-  background-size: auto; /* or specify like 400px 400px */
+  background-size: auto; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   min-height: 100vh;
@@ -26,13 +26,13 @@ body {
 .content-box {
   background-color: rgba(0, 0, 0, 0.75);
   padding: 2rem 3rem;
-  max-width: 1200px; /* Reduced from 1500px for better readability */
-  width: 100%; /* Changed from 90% to 100% */
+  max-width: 1200px; 
+  width: 90%; 
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
   overflow-wrap: break-word;
   box-sizing: border-box;
-  margin: 2rem 0; /* Added margin for spacing */
+  margin: 2rem 0; 
 }
 
 h1, h2 {
@@ -71,7 +71,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Fixed code snippet styles */
 pre {
   background-color: rgba(30, 30, 30, 0.9);
   padding: 1rem;
@@ -81,23 +80,23 @@ pre {
   font-size: 0.95rem;
   color: #d4d4d4;
   margin-bottom: 1.5rem;
-  width: 100%; /* Ensure it doesn't exceed container */
+  width: 100%; 
   box-sizing: border-box;
 }
 
-/* Fixed responsive images */
+
 .responsive-image {
-  max-width: 100%; /* This ensures image never exceeds container width */
-  width: 100%; /* Make image take full available width */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; 
+  width: 100%; 
+  height: auto;
   margin: 1rem 0;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  display: block; /* Prevent inline spacing issues */
+  display: block; 
   box-sizing: border-box;
 }
 
-/* Mobile responsiveness */
+
 @media (max-width: 768px) {
   .overlay {
     padding: 1rem;
