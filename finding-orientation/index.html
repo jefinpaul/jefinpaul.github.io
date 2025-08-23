@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finding Orientation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="overlay">
+    <div class="content-box">
+      <h1>Finding the orientation of weird shape based on Largest eigenvectors</h1>
+      <p>
+        Today, I’m going to explain how we can find the orientation of an object (e.g., a weird potato-shaped contour) using the largest eigenvector. I’ll provide an example in Python.
+      </p>
+      <p>
+        When analyzing weird potato shapes, we often wonder what the best way to determine their orientation is. If we look at the shape, we try to find the orientation based on its maximum variance — the direction in which the shape is most spread out. A natural way to define this orientation is by identifying the direction in which the shape exhibits maximum variance.
+      </p>
+      <p>
+        This can be achieved by applying the initial steps of Principal Component Analysis (PCA). PCA finds the directions (principal components) along which the data varies the most. The first principal component (associated with the largest eigenvalue) points in the direction of maximum variance. This direction effectively captures the main orientation of the shape.
+      </p>
+      <p>
+        By computing the eigenvectors of the covariance matrix of the shape’s coordinates, we can determine the orientation of the shape. The angle between the largest eigenvector and the x-axis gives us the orientation angle.
+      </p>
+      <p>
+        This method is computationally efficient and robust, and it provides a reliable orientation based on t
