@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Finding Orientation</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eigenvector-Based Orientation Detection</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="overlay">
     <div class="content-box">
-      <h1>Finding the orientation of weird shape based on Largest eigenvectors</h1>
+      <h1>Eigenvector-Based Orientation Detection for Irregular/Regular Shapes</h1>
+
       <p>
-        Today, I’m going to explain how we can find the orientation of an object (e.g., a weird potato-shaped contour) using the largest eigenvector. I’ll provide an example in Python.
+        In this post, I’m going to explain how we can find the orientation of an object (e.g., a weird-shaped potato) using the largest eigenvector.
       </p>
       <p>
-        When analyzing weird potato shapes, we often wonder what the best way to determine their orientation is. If we look at the shape, we try to find the orientation based on its maximum variance — the direction in which the shape is most spread out. A natural way to define this orientation is by identifying the direction in which the shape exhibits maximum variance.
+        When analyzing weird potato shapes or any kind of shapes, we often wonder what the best way to determine their orientation is. If we look at the shape from our human perspective, we try to find the orientation based on its maximum variance or the direction in which the shape is most spread out.
       </p>
       <p>
         This can be achieved by applying the initial steps of Principal Component Analysis (PCA). PCA finds the directions (principal components) along which the data varies the most. The first principal component (associated with the largest eigenvalue) points in the direction of maximum variance. This direction effectively captures the main orientation of the shape.
@@ -23,4 +24,99 @@
         By computing the eigenvectors of the covariance matrix of the shape’s coordinates, we can determine the orientation of the shape. The angle between the largest eigenvector and the x-axis gives us the orientation angle.
       </p>
       <p>
-        This method is computationally efficient and robust, and it provides a reliable orientation based on t
+        This method is computationally efficient and robust, and it provides a reliable orientation based on the overall distribution of points, rather than relying on edges or moments alone.
+      </p>
+
+      <h2>Steps with Diagram</h2>
+      <p>Below, I will explain the steps you can follow alongside the diagram to help you better understand:</p>
+      <img src="image1.png" alt="Diagram of PCA steps" class="responsive-image" />
+
+      <ul>
+        <li><strong>Centering the points:</strong> The input points representing the defect are first centered by subtracting their mean (centroid). This step translates the points so that their average position is at the origin, making subsequent calculations easier and invariant to translation, as shown in the first and second sub-images above.</li>
+        <li><strong>Computing the covariance matrix:</strong> The covariance matrix of the centered points is computed. This matrix captures how the points vary along each axis and how the axes vary with respect to each other.</li>
+        <li><strong>Eigen decomposition of the covariance matrix:</strong> The eigenvalues and eigenvectors of the covariance matrix are calculated. We select the largest eigenvalue, which gives an eigenvector that represents the direction of maximum variance in the defect. In simpler terms (as seen in the second sub-image), imagine drawing vectors from the origin to each input point, then projecting those points onto a common line (like the green line in the third sub-image). The line with the largest projection length corresponds to the largest eigenvalue.</li>
+        <li><strong>Sorting eigenvectors by eigenvalues:</strong> The eigenvector with the largest eigenvalue corresponds to the direction along which the defect points vary the most, this is called the principal axis. The second eigenvector corresponds to the least variance direction, and is orthogonal to the first.</li>
+        <li><strong>Determining the orientation angle:</strong> The orientation of the defect is defined as the angle between the principal eigenvector (major axis) and the positive x-axis. This is calculated using the arctan2 function, converting the result to degrees.</li>
+      </ul>
+
+      <p>
+        By calculating the eigenvectors of the covariance matrix of the defect points, we determine the principal axis that best represents the defect’s main direction. The orientation angle derived from this axis is then used to define the defect’s length and width accurately, aligned with its natural geometric features rather than arbitrary axes.
+      </p>
+
+      <p>
+        You can find the maths behind the Eigenvector at this page —&gt; <a href="link" target="_blank" rel="noopener noreferrer">link</a>
+      </p>
+
+      <p>
+        Note that the orientation is 0–180 degrees from right to left. Below I will show you how I implemented this method in Python.
+      </p>
+
+      <h2>Python Implementation</h2>
+      <pre><code class="python">
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+import math
+from glob import glob
+
+image_folder = '/input/shapes-oc'
+image_paths = sorted(glob(os.path.join(image_folder, '*.png')))  
+
+num_images = len(image_paths)
+cols = 3
+rows = (num_images + cols - 1) // cols 
+
+plt.figure(figsize=(15, 5 * rows))
+
+for i, image_path in enumerate(image_paths):
+    # Load and preprocess image
+    img = cv2.imread(image_path)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    _, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV)  # Invert if needed
+
+    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    if not contours:
+        continue
+
+    contour = max(contours, key=cv2.contourArea)
+    data_pts = contour.reshape(-1, 2).astype(np.float32)
+
+    mean = np.mean(data_pts, axis=0)
+    centered = data_pts - mean
+
+    cov = np.cov(centered.T)
+    eigenvalues, eigenvectors = np.linalg.eig(cov)
+    sort_indices = np.argsort(eigenvalues)[::-1]
+    eigenvectors = eigenvectors[:, sort_indices]
+    eigenvalues = eigenvalues[sort_indices]
+
+    angle_rad = np.arctan2(eigenvectors[1, 0], eigenvectors[0, 0])
+    angle_deg = np.degrees(angle_rad) % 180
+
+    center = tuple(mean.astype(int))
+    length = 100
+    pt2 = (int(center[0] + length * eigenvectors[0, 0]),
+           int(center[1] + length * eigenvectors[1, 0]))
+
+    output_img = img.copy()
+    cv2.circle(output_img, center, 5, (0, 0, 255), -1)
+    cv2.arrowedLine(output_img, center, pt2, (0, 255, 0), 2, tipLength=0.4)
+
+    output_img_rgb = cv2.cvtColor(output_img, cv2.COLOR_BGR2RGB)
+
+    plt.subplot(rows, cols, i + 1)
+    plt.imshow(output_img_rgb)
+    plt.title(f"{os.path.basename(image_path)}\nOrientation: {angle_deg:.2f}°")
+    plt.axis('off')
+
+plt.tight_layout()
+plt.show()
+      </code></pre>
+
+      <h2>Result Visualization</h2>
+      <img src="image2.png" alt="Output of Python code snippet" class="responsive-image" />
+    </div>
+  </div>
+</body>
+</html>
