@@ -9,17 +9,17 @@ body {
 }
 
 .overlay {
-  position: absolute; /* Changed from fixed */
+  position: fixed;
   top: 0; 
   left: 0; 
   right: 0; 
   bottom: 0;
-  min-height: 100vh; /* Ensure minimum height */
+  overflow-y: auto;  /* allow scrolling inside */
+  padding: 2rem;
   background-color: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Changed from center to flex-start */
-  padding: 2rem;
+  align-items: flex-start;
   box-sizing: border-box;
 }
 
