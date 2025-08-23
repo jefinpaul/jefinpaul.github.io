@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: url('bg_eigen.jpeg') no-repeat center center fixed;
-  background-size: cover;
+  background: url('bg_eigen.jpeg') repeat;
+  background-size: auto; /* or specify like 400px 400px */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   min-height: 100vh;
