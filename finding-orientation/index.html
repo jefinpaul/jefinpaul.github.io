@@ -4,7 +4,130 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eigenvector-Based Orientation Detection</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('bg_eigen.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .overlay {
+      position: absolute; /* Changed from fixed to absolute */
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      min-height: 100vh; /* Ensure minimum height */
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Changed from center to flex-start */
+      padding: 2rem;
+      box-sizing: border-box; /* Added for proper padding calculation */
+    }
+
+    .content-box {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 2rem 3rem;
+      max-width: 1200px; /* Reduced from 1500px for better readability */
+      width: 100%; /* Changed from 90% to 100% */
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      overflow-wrap: break-word;
+      box-sizing: border-box; /* Added for proper padding calculation */
+      margin: 2rem 0; /* Added margin for spacing */
+    }
+
+    h1, h2 {
+      color: #fff;
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p, ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      list-style-type: disc;
+    }
+
+    a {
+      color: #70c5f2;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Fixed code snippet styles */
+    pre {
+      background-color: rgba(30, 30, 30, 0.9);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Source Code Pro', monospace, monospace;
+      font-size: 0.95rem;
+      color: #d4d4d4;
+      margin-bottom: 1.5rem;
+      width: 100%; /* Ensure it doesn't exceed container */
+      box-sizing: border-box;
+    }
+
+    /* Fixed responsive images */
+    .responsive-image {
+      max-width: 100%; /* This ensures image never exceeds container width */
+      width: 100%; /* Make image take full available width */
+      height: auto; /* Maintain aspect ratio */
+      margin: 1rem 0;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: block; /* Prevent inline spacing issues */
+      box-sizing: border-box;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .overlay {
+        padding: 1rem;
+      }
+      
+      .content-box {
+        padding: 1.5rem 2rem;
+        margin: 1rem 0;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+      
+      p, ul {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="overlay">
@@ -12,7 +135,7 @@
       <h1>Eigenvector-Based Orientation Detection for Irregular/Regular Shapes</h1>
 
       <p>
-        In this post, I’m going to explain how we can find the orientation of an object (e.g., a weird-shaped potato) using the largest eigenvector.
+        In this post, I'm going to explain how we can find the orientation of an object (e.g., a weird-shaped potato) using the largest eigenvector.
       </p>
       <p>
         When analyzing weird potato shapes or any kind of shapes, we often wonder what the best way to determine their orientation is. If we look at the shape from our human perspective, we try to find the orientation based on its maximum variance or the direction in which the shape is most spread out.
@@ -21,7 +144,7 @@
         This can be achieved by applying the initial steps of Principal Component Analysis (PCA). PCA finds the directions (principal components) along which the data varies the most. The first principal component (associated with the largest eigenvalue) points in the direction of maximum variance. This direction effectively captures the main orientation of the shape.
       </p>
       <p>
-        By computing the eigenvectors of the covariance matrix of the shape’s coordinates, we can determine the orientation of the shape. The angle between the largest eigenvector and the x-axis gives us the orientation angle.
+        By computing the eigenvectors of the covariance matrix of the shape's coordinates, we can determine the orientation of the shape. The angle between the largest eigenvector and the x-axis gives us the orientation angle.
       </p>
       <p>
         This method is computationally efficient and robust, and it provides a reliable orientation based on the overall distribution of points, rather than relying on edges or moments alone.
@@ -40,7 +163,7 @@
       </ul>
 
       <p>
-        By calculating the eigenvectors of the covariance matrix of the defect points, we determine the principal axis that best represents the defect’s main direction. The orientation angle derived from this axis is then used to define the defect’s length and width accurately, aligned with its natural geometric features rather than arbitrary axes.
+        By calculating the eigenvectors of the covariance matrix of the defect points, we determine the principal axis that best represents the defect's main direction. The orientation angle derived from this axis is then used to define the defect's length and width accurately, aligned with its natural geometric features rather than arbitrary axes.
       </p>
 
       <p>
