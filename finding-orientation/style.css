@@ -19,7 +19,7 @@ body {
 .content-box {
   background-color: rgba(0, 0, 0, 0.75);
   padding: 2rem 3rem;
-  max-width: 900px;
+  max-width: 1500px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
   overflow-wrap: break-word;
