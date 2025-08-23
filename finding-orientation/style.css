@@ -5,27 +5,34 @@ body {
   background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
+  min-height: 100vh;
 }
 
 .overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.6); /* dark translucent overlay */
+  position: absolute; /* Changed from fixed */
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  min-height: 100vh; /* Ensure minimum height */
+  background-color: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start */
   padding: 2rem;
-  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .content-box {
   background-color: rgba(0, 0, 0, 0.75);
   padding: 2rem 3rem;
-  max-width: 1500px;
-  width: 90%; /* responsive width */
+  max-width: 1200px; /* Reduced from 1500px for better readability */
+  width: 100%; /* Changed from 90% to 100% */
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
   overflow-wrap: break-word;
+  box-sizing: border-box;
+  margin: 2rem 0; /* Added margin for spacing */
 }
 
 h1, h2 {
@@ -64,7 +71,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Code snippet styles */
+/* Fixed code snippet styles */
 pre {
   background-color: rgba(30, 30, 30, 0.9);
   padding: 1rem;
@@ -74,13 +81,42 @@ pre {
   font-size: 0.95rem;
   color: #d4d4d4;
   margin-bottom: 1.5rem;
+  width: 100%; /* Ensure it doesn't exceed container */
+  box-sizing: border-box;
 }
 
-/* Responsive images */
+/* Fixed responsive images */
 .responsive-image {
-  max-width: 100%;
-  height: auto;
+  max-width: 100%; /* This ensures image never exceeds container width */
+  width: 100%; /* Make image take full available width */
+  height: auto; /* Maintain aspect ratio */
   margin: 1rem 0;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  display: block; /* Prevent inline spacing issues */
+  box-sizing: border-box;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 1rem;
+  }
+  
+  .content-box {
+    padding: 1.5rem 2rem;
+    margin: 1rem 0;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  p, ul {
+    font-size: 1rem;
+  }
 }
