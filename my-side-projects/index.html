@@ -1,4 +1,70 @@
-<html>
-<head><title>My Side Projects</title></head>
-<body><h1>Coming Soon!</h1></body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Side Projects</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    .project-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .project-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .project-card:hover {
+      transform: scale(1.02);
+    }
+    .project-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .project-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: white;
+      background-color: #007ACC;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .project-link:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Side Projects</h1>
+  <div class="project-container">
+
+    <div class="project-card">
+      <div class="project-title">CAFA 6 - Protein Function Prediction</div>
+      <p>Participated in this Kaggle competition to predict protein functions using ML models.</p>
+      <a class="project-link" href="https://www.kaggle.com/competitions/cafa-6-protein-function-prediction" target="_blank">View on Kaggle</a>
+    </div>
+
+    <!-- Add more projects like this -->
+    <div class="project-card">
+      <div class="project-title">Another Project</div>
+      <p>Description of another project goes here.</p>
+      <a class="project-link" href="https://example.com" target="_blank">View Project</a>
+    </div>
+
+  </div>
+
+</body>
 </html>
+
