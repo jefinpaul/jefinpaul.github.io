@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url('bg_eigen.jpeg') repeat;
+  background-size: 400px 400px; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  min-height: 100vh;
+}
+
+.overlay {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  overflow-y: auto;  /* allow scrolling inside */
+  padding: 2rem;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.content-box {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 2rem 3rem;
+  max-width: 1200px; 
+  width: 90%; 
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  margin: 2rem 0; 
+}
+
+h1, h2 {
+  color: #fff;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+p, ul {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+  list-style-type: disc;
+}
+
+a {
+  color: #70c5f2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+pre {
+  background-color: rgba(30, 30, 30, 0.9);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'Source Code Pro', monospace, monospace;
+  font-size: 0.95rem;
+  color: #d4d4d4;
+  margin-bottom: 1.5rem;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+
+.responsive-image {
+  max-width: 100%; 
+  width: 100%; 
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  display: block; 
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 1rem;
+  }
+  
+  .content-box {
+    padding: 1.5rem 2rem;
+    margin: 1rem 0;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  p, ul {
+    font-size: 1rem;
+  }
+}
