@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6D Pose Estimation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="overlay">
+        <div class="content-box">
+
+            <h1>6D Pose Estimation</h1>
+            <p>
+                6D pose estimation is the task of determining an object’s complete position and orientation in 3D space. 
+                The term <strong>“6D”</strong> refers to the six degrees of freedom—three for translation and three for rotation.
+            </p>
+
+            <h2>Six Degrees of Freedom</h2>
+            <p>The 6D pose of an object consists of:</p>
+            <ul>
+                <li><strong>3 translation components</strong>: Tx, Ty, Tz</li>
+                <li><strong>3 rotation components</strong>: roll (Rx), pitch (Ry), yaw (Rz)</li>
+            </ul>
+
+            <img src="images/pose_axes_example.png" alt="6D Pose Diagram" class="responsive-image">
+
+            <p>
+                In the example diagram, the world coordinate system defines the X, Y, and Z axes.  
+                To determine an object’s pose, we measure:
+            </p>
+
+            <ul>
+                <li><strong>Translation (Tx, Ty, Tz)</strong>: the displacement of the object’s origin from the world origin.</li>
+                <li><strong>Rotation (Rx, Ry, Rz)</strong>: how much the object rotates around the X, Y, and Z axes.</li>
+            </ul>
+
+            <h2>Rotation Types</h2>
+            <ul>
+                <li><strong>Rx</strong>: Rotation about the X-axis → Roll</li>
+                <li><strong>Ry</strong>: Rotation about the Y-axis → Pitch</li>
+                <li><strong>Rz</strong>: Rotation about the Z-axis → Yaw</li>
+            </ul>
+
+
+            <h2>Related Literature</h2>
+
+            <h3>
+                <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wen_FoundationPose_Unified_6D_Pose_Estimation_and_Tracking_of_Novel_Objects_CVPR_2024_paper.pdf" target="_blank">
+                    FoundationPose: Unified 6D Pose Estimation and Tracking of Novel Objects
+                </a>
+            </h3>
+            <p>
+                FoundationPose proposes a unified framework capable of both 6D pose estimation and pose tracking 
+                for previously unseen objects. It leverages foundation models and geometric reasoning, making it 
+                highly suitable for robotics and real-world generalizable scenarios.
+                <br>
+                <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wen_FoundationPose_Unified_6D_Pose_Estimation_and_Tracking_of_Novel_Objects_CVPR_2024_paper.pdf" target="_blank">
+                    [PDF Link]
+                </a>
+            </p>
+
+            <h3>
+                <a href="https://arxiv.org/pdf/2011.04307" target="_blank">EfficientPose</a>
+            </h3>
+            <p>
+                EfficientPose is a scalable and accurate deep learning network for real-time 6D pose estimation.  
+                It introduces compound scaling (inspired by EfficientNet) to improve accuracy while maintaining efficiency.
+                <br>
+                <a href="https://arxiv.org/pdf/2011.04307" target="_blank">[PDF Link]</a>
+            </p>
+
+            <img src="images/survey_table.png" alt="Survey Table" class="responsive-image">
+
+
+            <!-- ================= UNDER DEVELOPMENT ================= -->
+
+            <h2>Page Under Development</h2>
+            <p>
+                More information will be added soon, check back again for the update.
+            </p>
+
+        </div>
+    </div>
+</body>
+</html>
