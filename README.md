@@ -8,6 +8,8 @@ Check out [Finding Orientation using Eigenvector](https://jefinpaul.github.io/fi
 ## side projects (small work)
 Check out [my Side Projects](https://jefinpaul.github.io/my-side-projects/).
 
+## Papers
+Check out my research papers and articles in this [folder](https://github.com/jefinpaul/jefinpaul.github.io/tree/main/papers).
 
 ## Currently working on
 Participating in [Recod.ai/LUC - Scientific Image Forgery Detection](https://www.kaggle.com/competitions/recodai-luc-scientific-image-forgery-detection) competition. 
