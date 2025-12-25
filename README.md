@@ -5,7 +5,7 @@ Check out [Finding Orientation using Eigenvector](https://jefinpaul.github.io/fi
 
 
 
-## side projects (small work)
+## Side projects (small work)
 Check out [my Side Projects](https://jefinpaul.github.io/my-side-projects/).
 
 ## Papers
