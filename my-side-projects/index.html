@@ -67,6 +67,16 @@
     .project-link:hover {
       background-color: #005fa3;
     }
+    .project-image {
+      position: absolute;      /* Position relative to project-card */
+      bottom: 15px;           
+      right: 15px;           
+      width: 150px;           
+      height: auto;            /* Maintain aspect ratio */
+      border-radius: 6px;      /* rounded corners */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5); /* subtle shadow */
+}
+
 
     p {
       font-size: 16px;
@@ -84,6 +94,7 @@
         <div class="project-title">3D Segmentation - Brain Tumor (3D U-Net)</div>
         <p>Segmentation of brain tumors using a 3D U-Net architecture for precise volumetric analysis, demonstrating advanced computer vision techniques in medical imaging.</p>
         <a class="project-link" href="https://www.kaggle.com/code/pauljef/3d-segmentation-brain-tumor-3dunet" target="_blank">View on Kaggle</a>
+        <img src="3dseg_result.png" alt="Segmentation Result" class="project-image">
       </div>
       
       <div class="project-card">
