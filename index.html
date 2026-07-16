@@ -3,59 +3,183 @@
 <head>
   <meta charset="UTF-8">
   <title>Jefin's Site</title>
-  <style>
-    body {
-      margin: 0;
-      background-image: url('background.png'); 
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .notebook-container {
-      background-color: rgba(0, 0, 0, 0.8); 
-      max-width: 900px;
-      margin: 80px auto;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      color: white;
-    }
-
-    .notebook-container p,
-    .notebook-container li,
-    .notebook-container ol,
-    .notebook-container ul {
-      color: white;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .notebook-container h1 {
-      color: #00aced;
-      border-bottom: 2px solid #444;
-      padding-bottom: 4px;
-      font-size: 28px;
-      margin-bottom: 24px;
-    }
-
-    .spacer {
-      margin-top: 650px; 
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-  <div class="notebook-container">
-    <h1>Welcome to My Site</h1>
-    
-    <p>Hi, I’m Jefin :)</p>
-    <p>I’m currently working at Vimec as a Computer Vision Engineer, primarily focused on algorithm design and image processing.</p>
-    <p>I completed my Master’s in Machine Learning and Data Mining from Université Jean Monnet.</p>
-    <p>Right now, my favorite thing is making complex ideas as simple and understandable as possible and I love trying out new things!</p>
-    
-    <p class="spacer">This website is still in progress....</p>
-    <p>Oopsie daisie!</p>
+
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="clouds" aria-hidden="true">
+  <div class="cloud" style="top:58%;  width:220px; height:90px;  animation-duration:70s;  animation-delay:0s;"></div>
+  <div class="cloud" style="top:52%; width:160px; height:70px;  animation-duration:55s;  animation-delay:-15s;"></div>
+  <div class="cloud" style="top:38%; width:260px; height:110px; animation-duration:85s;  animation-delay:-40s;"></div>
+  <div class="cloud" style="top:55%; width:180px; height:75px;  animation-duration:60s;  animation-delay:-8s;"></div>
+  <div class="cloud" style="top:70%; width:240px; height:100px; animation-duration:75s;  animation-delay:-30s;"></div>
+  <div class="cloud" style="top:85%; width:170px; height:70px;  animation-duration:65s;  animation-delay:-50s;"></div>
+  <div class="cloud" style="top:15%; width:190px; height:80px;  animation-duration:60s;  animation-delay:-25s;"></div>
+  <div class="cloud" style="top:48%; width:150px; height:65px;  animation-duration:50s;  animation-delay:-5s;"></div>
+</div>
+
+  <nav>
+    <div class="logo">jefin</div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="#home">home</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#experience">experience</a></li>
+        <li><a href="#education">education</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#art">art</a></li>
+      </ul>
+      <button id="themeToggle" class="theme-toggle" type="button">☀ light mode</button>
+    </div>
+  </nav>
+
+  <div class="section" id="home">
+    <div style="display:flex; align-items:center; gap:40px;">
+
+      <div>
+        <h2>Jefin Paul</h2>
+        <p class="tagline">hello</p>
+
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/jefinpaul" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/jefinpaul" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="mailto:pau.jefi@gmail.com" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- rotating comet around the photo -->
+      <div style="position:relative; width:190px; height:190px; flex-shrink:0; margin-left:auto;">
+        <canvas id="orbitCanvas" width="260" height="260"
+          style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; z-index:2;">
+        </canvas>
+        <img src="photo4.jpeg"
+          style="width:190px; height:190px; border-radius:70%; object-fit:cover; border: 2px solid rgba(200,180,255,0.3); position:relative; z-index:1;">
+      </div>
+
+    </div>
   </div>
+
+  <div class="section" id="about">
+    <h1>About</h1>
+    <p>I used to work at Vimec as a Computer Vision Engineer, that's not what I do these days.</p>
+    <p>I completed my Master's in Machine Learning and Data Mining at Université Jean Monnet in France and earned my Bachelor's degree in Electronics and Communication Engineering from MITS, Kerala, India. </p>
+    <p>Over the years, I've worked at Cognizant in India, TIAMA in Lyon, STMicroelectronics in Grenoble, and most recently as a Computer Vision Engineer at Vimec in the Netherlands.</p>
+    <p>I'm fascinated by physics, Earth systems, and space technology and like turning complex ideas into things that are simple and understandable. That's pretty much it.</p>
+
+  </div>
+
+  <div class="section" id="experience">
+    <h1>Experience</h1>
+    <div class="timeline">
+      <div class="timeline-comet"></div>
+      <div class="timeline-item current">
+        <div class="tl-date">Jan 2025 - Feb 2026</div>
+        <div class="tl-card" data-hue="rose">
+          <h3>Computer Vision &amp; Algorithm Development Engineer</h3>
+          <span class="company">Vimec - Eindhoven, Netherlands</span>
+          <p class="desc">Designed computer vision and image-processing algorithms for automated inspection systems in pharmaceutical glass manufacturing.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">March 2024 - August 2024</div>
+        <div class="tl-card" data-hue="cyan">
+          <h3>AI Engineering Intern - Master's Thesis</h3>
+          <span class="company">ST Microelectronics - Crolles, France</span>
+          <p class="desc">Applied machine learning to predict nanometer-scale outcomes of plasma etching wafers in semiconductor manufacturing.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">March 2023 - August 2023</div>
+        <div class="tl-card" data-hue="rose">
+          <h3>Deep Learning Intern - Master's Internship</h3>
+          <span class="company">Tiama - Lyon, France</span>
+          <p class="desc">Built defect detection models and dataset-partitioning strategies for glass manufacturing quality control.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">August 2021 - August 2022</div>
+        <div class="tl-card" data-hue="gold">
+          <h3>Programmer Analyst (Data Engineer)</h3>
+          <span class="company">Cognizant Technology Solutions - India</span>
+          <p class="desc">Built and optimized ETL pipelines and analytical datasets for large-scale data warehouse systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="education">
+    <h1>Education</h1>
+    <div class="timeline">
+      <div class="timeline-comet"></div>
+      <div class="timeline-item">
+        <div class="tl-date">2022 - 2024</div>
+        <div class="tl-card" data-hue="cyan">
+          <h3>Master M2, Machine Learning and Data Mining</h3>
+          <span class="company">Université Jean Monnet - France</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2017 - 2021</div>
+        <div class="tl-card" data-hue="gold">
+          <h3>B.Tech, Electronics and Communication Engineering</h3>
+          <span class="company">KTU - India</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="projects">
+    <div class="section-header-row">
+      <h1>Blog / Projects</h1>
+      <a class="explore-link" href="projects/side-projects.html">Explore more →</a>
+    </div>
+    <p>A few things I've written about.</p>
+
+    <div class="featured-project-grid">
+      <a class="project-card" href="https://www.kaggle.com/code/pauljef/3d-segmentation-brain-tumor-3dunet" target="_blank" rel="noopener">
+        <div class="project-thumb"><img src="projects/1braintumor.png" alt="" loading="lazy"></div>
+        <span class="project-name">3D Segmentation: Brain Tumor (3D U-Net)</span>
+      </a>
+      <a class="project-card" href="https://jefinpaul.github.io/finding-orientation/" target="_blank" rel="noopener">
+        <div class="project-thumb"><img src="projects/2eigenvector.png" alt="" loading="lazy"></div>
+        <span class="project-name">Finding Orientation</span>
+      </a>
+      <a class="project-card" href="https://github.com/jefinpaul/Data-mining-R-project/blob/main/house-price-prediction-projecr-r.ipynb" target="_blank" rel="noopener">
+        <div class="project-thumb"><img src="projects/3houseprice.png" alt="" loading="lazy"></div>
+        <span class="project-name">House Price Prediction (R)</span>
+      </a>
+      <a class="project-card" href="https://jefinpaul.github.io/hough-transform-finding-orientation/" target="_blank" rel="noopener">
+        <div class="project-thumb"><img src="projects/4houghtransform.png" alt="" loading="lazy"></div>
+        <span class="project-name">Hough Transform: Finding Orientation</span>
+      </a>
+    </div>
+
+    <a class="explore-more-btn" href="projects/side-projects.html">Explore more projects →</a>
+  </div>
+
+  <div class="section" id="art">
+    <div class="section-header-row">
+      <h1>Art</h1>
+      <a class="explore-link" href="myart/art.html">Explore more →</a>
+    </div>
+    <p>Outside of tech I enjoy creating digital art. A few pieces below.</p>
+
+    <div class="art-grid">
+      <div class="art-card"><img src="art1.png" alt="Art piece 1" loading="lazy"></div>
+      <div class="art-card"><img src="art2.png" alt="Art piece 2" loading="lazy"></div>
+      <div class="art-card"><img src="art6.PNG" alt="Art piece 6" loading="lazy"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

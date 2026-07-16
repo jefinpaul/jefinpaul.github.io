@@ -1,13 +1,4 @@
 # jefinpaul.github.io
 
-## Image processing
-Check out [Finding Orientation using Eigenvector](https://jefinpaul.github.io/finding-orientation/) if you want to learn about finding orientation using the largest eigenvector for a shape in Python.
-
-Learn the basic concepts of Hough transform [Hough-transform](https://jefinpaul.github.io/hough-transform-finding-orientation/) if you want to learn about how hough transform can be used for finding orientation, adding soon
-
-## Side projects (small work)
-Check out [my Side Projects](https://jefinpaul.github.io/my-side-projects/).
-
-## Papers
-Check out my research papers and articles in this [folder](https://github.com/jefinpaul/jefinpaul.github.io/tree/main/papers).
-
+I created this themed website solely based on my interest. 
+I also tried to include both dark mode and light mode features.
