@@ -305,7 +305,7 @@ function buildStars() {
     stars.push({
       x: Math.random() * W, y: Math.random() * H,
       ox: 0, oy: 0,
-      r: 0.7 + Math.random() * 0.45,
+      r: 0.9 + Math.random() * 0.45,
       baseOpacity: 0.25 + Math.random() * 0.45,
       twinkleSpeed: 0.05 + Math.random() * 0.018,
       twinkleOffset: Math.random() * Math.PI * 2,
@@ -321,7 +321,7 @@ function buildStars() {
     stars.push({
       x: Math.random() * W, y: Math.random() * H,
       ox: 0, oy: 0,
-      r: 0.9 + Math.random() * 0.75,
+      r: 1 + Math.random() * 0.85,
       baseOpacity: 0.3 + Math.random() * 0.4,
       twinkleSpeed: 0.05 + Math.random() * 0.012,
       twinkleOffset: Math.random() * Math.PI * 2,
